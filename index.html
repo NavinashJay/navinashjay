@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Readify | Home</title>
+  <meta name="description" content="Readify makes reading feel cozy with book discovery tools."/>
+  <link rel="icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#16a34a">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="brand" href="index.html"><img src="images/readify-logo.png" alt="Readify" class="brand-logo"></a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="explorer.html">Explorer</a>
+      <a href="tracker.html">Progress</a>
+      <a href="recommender.html">Recommender</a>
+      <a href="flow.html">Flow</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section hero">
+    <div class="card hero-left">
+      <div class="badge">Quote of the moment</div>
+      <h1>Welcome to Readify 🌿</h1>
+      <p class="small">A calm place to find your next book and stay consistent.</p>
+
+      <p class="quote" id="quoteBox"></p>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn" id="nextQuoteBtn">Next quote</button>
+        <a class="btn-secondary" href="explorer.html">Explore books</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div>
+        <div class="badge">Author of the Day</div>
+        <h2 id="authorName" style="margin:0;">Loading…</h2>
+        <p class="small" id="authorDesc"></p>
+        <p class="small">Come back tomorrow — it changes daily.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Your cozy picks</h2>
+    <p class="small">These are a few popular reads on Readify.</p>
+
+    <div class="home-books" id="homeBooks"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div class="small">© Readify • Made for readers</div>
+
+    <form id="newsletterForm" class="small" style="min-width:300px;">
+      <strong>Newsletter:</strong>
+      <div style="display:flex; gap:10px; margin-top:8px; flex-wrap:wrap;">
+        <input id="newsletterEmail" type="text" placeholder="your email (saved locally)" style="flex:1; min-width:220px;">
+        <button class="btn" type="submit">Subscribe</button>
+      </div>
+      <div id="newsletterMsg"></div>
+    </form>
+  </div>
+</footer>
+
+<script src="css/js/common.js"></script>
+<script src="css/js/data.js"></script>
+<script src="css/js/home.js"></script>
+</body>
+</html>
