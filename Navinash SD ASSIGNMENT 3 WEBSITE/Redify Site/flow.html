@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Readify | Flow</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#16a34a">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="brand" href="index.html"><img src="images/readify-icon.png" alt="Readify logo" class="brand-logo"><span class="brand-text">Readify</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="explorer.html">Explorer</a>
+      <a href="tracker.html">Progress</a>
+      <a href="recommender.html">Recommender</a>
+      <a href="flow.html">Flow</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="container section">
+  <h1>Reading Flow 🌙</h1>
+  <p class="small">Create a calm mood and track the books you complete (stored locally).</p>
+
+  <div class="grid" style="grid-template-columns: 1fr 1fr; gap:16px;">
+    <div class="card flow-card">
+      <h2 style="margin-top:0;">Cozy Sounds</h2>
+      <p class="small">Press toggle to play a gentle ambient loop.</p>
+
+      <button class="btn" id="soundBtn" type="button">Toggle Cozy Sound</button>
+      <p class="small" id="soundStatus" style="margin-top:10px;"></p>
+
+      <audio id="sound" loop>
+        <source src="assets/sounds/cozy1.wav" type="audio/wav">
+      </audio>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0;">Completed Books</h2>
+      <p class="small">Mark a book as completed and it will be saved to localStorage.</p>
+
+      <label for="completedSelect">Choose book</label>
+      <select id="completedSelect"></select>
+
+      <button class="btn" id="completeBtn" type="button" style="width:100%; margin-top:10px;">Mark as Completed</button>
+      <p class="small" id="completeMsg" style="margin-top:10px;"></p>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Your Completed List</h2>
+    <div id="completedList" class="grid"></div>
+  </section>
+</main>
+
+<footer><div class="container footer-row"><div class="small">© Readify</div></div></footer>
+
+<script src="css/js/common.js"></script>
+<script src="css/js/data.js"></script>
+<script src="css/js/flow.js"></script>
+</body>
+</html>

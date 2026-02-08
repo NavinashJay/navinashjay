@@ -1,0 +1,761 @@
+:root{
+  --bg: #071a12;
+  --card: rgba(11, 42, 27, 0.66);
+  --text: #eafff4;
+  --muted: rgba(234, 255, 244, 0.70);
+  --accent: #34d399;
+  --accent2: #10b981;
+  --border: rgba(52, 211, 153, 0.22);
+  --danger: #fb7185;
+}
+
+*{ box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(16,185,129,0.18), transparent 60%),
+    radial-gradient(1000px 600px at 90% 20%, rgba(52,211,153,0.14), transparent 60%),
+    radial-gradient(900px 500px at 50% 95%, rgba(34,197,94,0.10), transparent 60%),
+    var(--bg);
+}
+
+.container{ width: min(1100px, 92%); margin: 0 auto; }
+.section{ padding: 26px 0; }
+a{ color: inherit; text-decoration: none; }
+img{ max-width: 100%; display: block; }
+
+.small{ font-size: .92rem; color: var(--muted); }
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 45px rgba(0,0,0,.28);
+}
+
+.btn{
+  display: inline-flex; align-items:center; justify-content:center;
+  padding: 10px 14px; border-radius: 12px;
+  border: none; cursor: pointer;
+  font-weight: 800;
+  color: #052016;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  transition: transform .15s ease, filter .15s ease;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, .16);
+}
+.btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+.btn:active{ transform: translateY(0px); }
+
+.btn-secondary{
+  border: 1px solid var(--border);
+  background: rgba(7, 26, 18, 0.45);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.btn-secondary:hover{ filter: brightness(1.08); }
+
+.badge{
+  display:inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(52, 211, 153, .35);
+  background: rgba(52, 211, 153, .10);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+/* NAVBAR */
+header{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(7, 26, 18, 0.82);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+.navbar{
+  display:flex; align-items:center; justify-content: space-between;
+  padding: 14px 0;
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight: 900; letter-spacing: .5px;
+}
+.brand-badge{
+  width: 36px; height: 36px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+}
+.nav-links{ display:flex; gap: 16px; align-items:center; }
+.nav-links a{
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 12px;
+  transition: background .15s ease, color .15s ease;
+}
+.nav-links a:hover{ background: rgba(52,211,153,.10); color: var(--text); }
+
+.hamburger{
+  display:none;
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(11, 42, 27, 0.50);
+  cursor: pointer;
+}
+.hamburger span{
+  display:block; width: 20px; height: 2px; margin: 5px auto;
+  background: var(--text);
+}
+
+@media (max-width: 820px){
+  .hamburger{ display:inline-block; }
+  .nav-links{
+    display:none;
+    position:absolute; left:0; right:0; top: 68px;
+    background: rgba(7, 26, 18, 0.92);
+    border-bottom: 1px solid var(--border);
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav-links.show{ display:flex; }
+  .nav-links a{ padding: 12px 14px; }
+}
+
+/* FOOTER */
+footer{
+  border-top: 1px solid var(--border);
+  padding: 22px 0;
+  color: var(--muted);
+}
+.footer-row{
+  display:flex; gap:14px; justify-content: space-between; flex-wrap: wrap;
+}
+
+/* HOME */
+.hero{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.hero-left{ padding: 18px; }
+.hero-right{
+  padding: 18px;
+  display:flex; align-items:center; justify-content:center;
+  min-height: 240px;
+  background:
+    radial-gradient(800px 360px at 20% 20%, rgba(16,185,129,.20), transparent 60%),
+    rgba(7,26,18,.35);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+.quote{
+  font-size: 1.15rem;
+  margin: 10px 0 14px;
+}
+.quote span{ color: var(--muted); font-size: .95rem; display:block; margin-top: 8px; }
+
+.home-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+}
+.home-card{ padding: 16px; }
+
+.home-books{
+  /* 6 books as 6 separate cards (3 on top, 3 below on desktop) */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 560px){
+  .home-books{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 900px){
+  .home-books{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.book-mini{ padding: 14px; }
+.book-mini img{
+  border-radius: 14px;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* cropped cover tiles are 512x512 */
+  height: auto;
+  object-fit: cover;
+  object-position: top center; /* keep title area visible */
+  border: 1px solid rgba(52,211,153,.18);
+  background: rgba(0,0,0,0.18);
+}
+.book-mini h3{ margin: 10px 0 4px; font-size: 1.0rem; }
+.book-mini p{ margin: 0; }
+
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+  .home-grid{ grid-template-columns: 1fr; }
+  .home-books{ grid-template-columns: 1fr; }
+}
+
+/* EXPLORER */
+.explorer-card{ padding: 14px; }
+.explorer-controls{
+  display:grid;
+  grid-template-columns: 1fr 180px 180px;
+  gap: 10px;
+  align-items:center;
+}
+input, select, textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(11, 42, 27, 0.45);
+  color: var(--text);
+  outline:none;
+}
+@media (max-width: 900px){
+  .explorer-controls{ grid-template-columns: 1fr; }
+}
+
+.grid{
+  display: grid;
+  /* Explorer books as a 3x2 grid on desktop (responsive on smaller screens) */
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 560px){
+  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 900px){
+  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Keep single-column on all screen sizes */
+
+.book-card{ padding: 14px; cursor:pointer; transition: transform .12s ease, filter .12s ease; }
+.book-card:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+.book-meta{ color: var(--muted); font-size: .92rem; }
+
+.cover{
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* cropped cover tiles are 512x512 */
+  height: auto;            /* let aspect-ratio decide height */
+  object-fit: cover;
+  object-position: top center; /* keep title area visible */
+  display: block;
+  border-radius: 16px;
+  border: 1px solid rgba(52,211,153,.18);
+  margin-bottom: 10px;
+  background: rgba(0,0,0,0.18);
+}
+
+/* MODAL */
+.modal-backdrop{
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.55);
+  display:none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 60;
+}
+.modal-backdrop.show{ display:flex; }
+.modal{
+  width: min(860px, 96vw);
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(7,26,18,.92);
+  backdrop-filter: blur(10px);
+}
+.modal-head{
+  display:flex; justify-content: space-between; align-items:center; gap: 10px;
+  margin-bottom: 10px;
+}
+.close-btn{
+  border: 1px solid var(--border);
+  background: rgba(11,42,27,.45);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor:pointer;
+}
+.table{
+  width:100%;
+  border-collapse: collapse;
+  overflow:hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+.table th, .table td{
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(52,211,153,.15);
+  text-align:left;
+}
+.table th{ background: rgba(52,211,153,.10); }
+.table td{ color: var(--muted); }
+
+/* TRACKER */
+.track-layout{
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+  align-items:start;
+}
+@media (max-width: 900px){ .track-layout{ grid-template-columns: 1fr; } }
+.track-panel{ padding: 16px; }
+.track-card{ padding: 14px; }
+.bar{
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(7, 26, 18, 0.22);
+  overflow:hidden;
+  border: 1px solid rgba(52, 211, 153, 0.18);
+  margin: 10px 0;
+}
+.bar-fill{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  transition: width .4s ease;
+}
+
+/* RECOMMENDER */
+.rec-layout{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  align-items:start;
+}
+@media (max-width: 900px){ .rec-layout{ grid-template-columns: 1fr; } }
+.rec-panel{ padding: 16px; }
+.rec-results{ padding: 14px; min-height: 260px; }
+
+/* FLOW */
+.flow-card{
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 18px;
+  text-align:center;
+}
+.flow-time{
+  font-size: 52px;
+  font-weight: 900;
+  margin: 8px 0 14px;
+}
+.flow-buttons{ display:flex; justify-content:center; gap: 10px; flex-wrap:wrap; }
+
+/* FEEDBACK */
+.feedback-card{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px;
+}
+.err{ color: var(--danger); font-weight: 800; margin-top: 8px; }
+.ok{ color: var(--accent); font-weight: 800; margin-top: 8px; }
+
+/* FAQ */
+.faq-item{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: rgba(7, 26, 18, 0.35);
+  cursor: pointer;
+}
+.faq-q{
+  font-weight: 900;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+}
+.faq-a{ display:none; margin-top: 8px; color: var(--muted); }
+.faq-item.open .faq-a{ display:block; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* === FULL COVER: make image area tall enough on big screens === */
+@media (min-width: 900px){
+  .cover{ aspect-ratio: 1 / 1; }
+}
+
+
+
+/* Covers contain titles baked into images; avoid duplicating titles in text. */
+/* Small animation used in Recommender */
+@keyframes readifyShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.shake{
+  animation: readifyShake 0.4s;
+}
+
+/* Cards used for saved/completed lists (keep text visible) */
+.book-list-card img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid rgba(52,211,153,.18);
+  background: rgba(0,0,0,0.18);
+}
+
+.book-list-card h3,
+.book-list-card .book-meta,
+.book-list-card p{
+  display: block !important;
+}
+
+/* === UNIFORM BOOK CARD FIX === */
+.grid, .home-books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.book-card {
+  padding: 16px;
+  margin: 0;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .grid, .home-books { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid, .home-books { grid-template-columns: 1fr; }
+}
+
+
+/* === FIX: MAKE ALL BOOK CARDS SAME VISUAL MARGINS/HEIGHTS === */
+.home-books, .grid { align-items: stretch; }
+
+/* Ensure each card stretches and content aligns consistently */
+.card.book-mini,
+.card.book-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Keep metadata height consistent so buttons line up */
+.card.book-mini .small {
+  min-height: 1.2em;
+  margin: 0;
+}
+
+/* Push CTA button to bottom so all cards look equal */
+.card.book-mini .btn-secondary {
+  margin-top: auto;
+}
+
+/* Force consistent cover tile size in both places */
+.card.book-mini img,
+.card.book-card .cover {
+  width: 100%;
+  height: 240px;       /* consistent height */
+  object-fit: cover;
+  object-position: top center;
+}
+
+
+/* === FINAL UNIFORM CARD SPACING (HOME + EXPLORER) === */
+/* Make every card identical: same padding, same inner spacing, same image sizing */
+.card.book-mini,
+.card.book-card{
+  padding: 16px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  height: 100% !important;
+}
+
+/* Remove any default gaps from inline images */
+.card.book-mini img,
+.card.book-card img.cover{
+  display: block !important;
+  width: 100% !important;
+  height: 240px !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  margin: 0 0 12px 0 !important;
+  border-radius: 14px !important;
+}
+
+/* Normalize text + button spacing so left/right/top/bottom all match */
+.card.book-mini .small,
+.card.book-card .book-meta{
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 1.2em;
+}
+
+/* Keep the CTA aligned at the bottom for equal look */
+.card.book-mini .btn-secondary{
+  margin-top: auto !important;
+  align-self: flex-start;
+}
+
+
+/* === UNIFORM COVER CROPPING (CENTER) ===
+   Fixes 'uneven margins' feeling caused by top-aligned cover artwork.
+*/
+.card.book-mini img,
+.book-mini img,
+.card.book-card img.cover,
+.card.book-card .cover{
+  object-position: center center !important;
+  background-position: center center !important;
+}
+
+
+/* === FIX: UNIFORM CARD MARGINS + COVER TITLES NOT CUT ===
+   - Make padding identical for every book card
+   - Use fixed cover height (not square) so the title area stays visible
+   - Top-align cover crop to keep title text visible
+*/
+.home-books, .grid{ gap: 24px !important; align-items: stretch; }
+
+.card.book-mini, .book-mini{
+  padding: 16px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.card.book-mini img, .book-mini img{
+  display: block !important;
+  width: 100% !important;
+  height: 230px !important;         /* consistent cover height */
+  aspect-ratio: auto !important;    /* remove square crop that cuts titles */
+  object-fit: cover !important;
+  object-position: top center !important; /* keep title visible */
+  margin: 0 0 12px 0 !important;
+}
+
+.card.book-mini .btn-secondary{
+  margin-top: auto !important;      /* button aligns on all cards */
+}
+
+/* Explorer cards (if used) */
+.card.book-card{
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+.card.book-card .cover, .card.book-card img.cover{
+  display: block !important;
+  width: 100% !important;
+  height: 230px !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+}
+
+
+/* === FINAL FIX: UNIFORM CARD SPACING + KEEP COVER TITLES VISIBLE === */
+*{ box-sizing: border-box; }
+
+.home-books, .grid{
+  align-items: stretch !important;
+  gap: 24px !important;
+}
+
+/* ONE source of spacing: only the card has padding */
+.card.book-mini, .card.book-card{
+  padding: 18px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Make all covers behave the same (no hidden gaps, no square crop) */
+.card.book-mini > img,
+.card.book-card img,
+.card.book-card .cover{
+  display: block !important;
+  width: 100% !important;
+  height: 240px !important;
+  aspect-ratio: auto !important;     /* kill any 1/1 crop */
+  object-fit: cover !important;
+  object-position: top center !important; /* keep title area visible */
+  margin: 0 !important;
+  border-radius: 14px !important;
+  background: rgba(0,0,0,0.12) !important;
+}
+
+/* This creates identical 'inner margin' feeling around every cover */
+.card.book-mini > img{
+  padding: 6px !important;
+}
+
+/* Normalize author + CTA spacing */
+.card.book-mini .small,
+.card.book-card .small,
+.card.book-card .book-meta{
+  margin: 8px 0 0 0 !important;
+  padding: 0 !important;
+  min-height: 1.2em;
+}
+.card.book-mini .btn-secondary,
+.card.book-card .btn-secondary{
+  margin-top: auto !important; /* button aligns at bottom */
+}
+
+/* Responsive columns */
+@media (max-width: 900px){
+  .home-books, .grid{ grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px){
+  .home-books, .grid{ grid-template-columns: 1fr !important; }
+}
+
+
+/* === COVER FIX: EDGE-TO-EDGE, NO GAPS, TITLES VISIBLE === */
+.cover-wrap{
+  border-radius: 16px;
+  overflow: hidden;            /* clip the zoomed image */
+  background: transparent;
+  margin: 0 0 12px 0;
+}
+
+/* Home + Explorer covers */
+.cover-wrap img{
+  display:block;
+  width:100%;
+  height:240px;                /* consistent height */
+  object-fit:cover;
+  object-position: top center; /* keep title visible */
+  transform: scale(1.04);      /* remove internal letterbox/borders */
+}
+
+/* Ensure any old rules can't break this */
+.book-mini img,
+.book-card img.cover{
+  height: 240px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  aspect-ratio: auto !important;
+}
+@media (max-width: 900px){
+  .cover-wrap img{ height: 220px; }
+}
+@media (max-width: 600px){
+  .cover-wrap img{ height: 210px; }
+}
+
+
+/* === FIX v2: REMOVE SQUARE ASPECT-RATIO THAT CAUSES SIDE/TOP GAPS ===
+   Some pages apply aspect-ratio: 1/1 to images (.book-mini img, .cover, etc).
+   That can prevent <img> from stretching full width/height, leaving visible background gaps.
+*/
+.book-mini .cover-wrap img,
+.book-card .cover-wrap img,
+.book-card .cover-wrap img.cover{
+  width: 100% !important;
+  height: 240px !important;
+  aspect-ratio: auto !important;   /* kill any 1/1 crop */
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: top center !important; /* keep title visible */
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: scale(1.08) !important; /* stronger zoom to remove internal borders */
+}
+
+/* Ensure wrapper has NO padding that could show as a gap */
+.book-mini .cover-wrap,
+.book-card .cover-wrap{
+  padding: 0 !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+}
+
+
+/* === LOGO (IMAGE) FIX === */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+.brand-logo{
+  height:40px;
+  width:auto;
+  display:block;
+}
+
+
+
+.brand-text{
+  font-size:20px;
+  font-weight:700;
+  color:#eafaf1;
+  line-height:1;
+}
+
+/* === COVER GAP FIX (EXPLORER + HOME) === */
+.cover-wrap{
+  background: transparent !important;
+  overflow: hidden !important;
+}
+.cover{
+  display:block !important;
+  width:100% !important;
+  height:240px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  margin:0 !important;
+}
